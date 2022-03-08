@@ -6,23 +6,20 @@ using UnityEngine;
 public class TargetScript : MonoBehaviour
 {
     ScoreManager score;
-
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource audioSource;
+    public AudioClip arrowSound;
+    private void Start()
     {
-        Destroy(gameObject, 2f);
+        score = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+        audioSource = GameObject.Find("SoundManager").GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
+
         Destroy(gameObject);
-        score = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-        score.ScoreUpdate(1);
+        score.ScoreUpdate(5);
+        audioSource.clip = arrowSound;
+        audioSource.Play();
+
     }
 }
