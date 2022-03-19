@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject targetPrefab;
-    public ScoreManager score;
+    ScoreManager score;
 
     void Start()
     {
@@ -15,13 +15,13 @@ public class GameManager : MonoBehaviour
     }
     
     void Update()
-    {
-        CancelInvoke("SpawnMethed");        
+    {        
+        CancelInvoke("SpawnMethed");
     }
 
     private void SpawnMethod()
     {
-        if(score.isGameWin == false)
+        if((score.isGameWin == false) && (score.isGameOver == false))
         {
             float randomX = UnityEngine.Random.Range(-4.5f, 4.5f);
             float randomY = UnityEngine.Random.Range(-2.3f, 2.3f);
